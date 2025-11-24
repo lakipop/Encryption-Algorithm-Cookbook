@@ -1,0 +1,205 @@
+Lab sheet: 01
+Lab sheet title: Encryption algorithm implementations.
+Aim: To understand how basic encryption algorithms are implemented in coding level.
+Objectives:
+• To understand basic logic of 05 different encryption algorithms.
+• To understand how the encryption and decryption mechanisms works for above algorithms.
+• To implement the above encryption algorithms in Java programming language.
+• To design your own basic encryption algorithm.
+Content:
+1) Caesar cipher
+2) ROT13 (Rotate by 13 Places)
+3) Atbash cipher
+4) Vigenère cipher
+5) Rail Fence cipher
+6) Your encryption algorithm
+Followings are the basic information of the encryption algorithms. You need to understand those
+algorithms and implement those in Java coding. You feel free to use reliable sources from the
+internet for understanding the algorithms and implementations.
+Please be honest with yourself to NOT to use ChatGPT, try by yourself first.
+1) Caesar cipher
+The Caesar Cipher is one of the simplest and most well-known encryption techniques. It is a type
+of substitution cipher where each letter in the plaintext is shifted by a fixed number of positions in
+the alphabet. The cipher is named after Julius Caesar, who reportedly used it to communicate
+securely with his generals.
+• How it works:
+o Shift: Each letter in the plaintext is shifted by a fixed number of positions down
+(or up) the alphabet. This fixed number is called the "key." In this Caesar cipher
+key is always 03.
+o Wrapping: If the shift moves past the last letter of the alphabet, it wraps around
+to the beginning (e.g., shifting "Z" by 1 becomes "A").
+o Example:
+o Key is 3. This means each letter is shifted by 3 positions in the alphabet.
+Plaintext: HELLO
+Letter Shifted by 3 positions
+H K
+E H
+L O
+L O
+O R
+Ciphertext: KHOOR
+So, the Caesar Cipher has transformed "HELLO" into "KHOOR" using a shift of 3.
+Steps:
+For each letter in the plaintext, locate it in the alphabet.
+Shift it forward by the key number of positions (in this case, 3).
+If the shift moves beyond "Z", wrap around to the start of the alphabet.
+Repeat the process for all letters in the plaintext.
+Decryption process:
+To decrypt the message, the process is simply reversed by shifting each letter by the same
+key, but in the opposite direction (backward).
+For the ciphertext KHOOR (with key = 3):
+K becomes H
+H becomes E
+O becomes L
+O becomes L
+R becomes O
+The original plaintext HELLO is recovered.
+Caesar cipher algorithm:
+1. Input:
+o A plaintext message (the original message to encrypt).
+o A key (an integer value representing the number of positions to shift the
+letters).
+2. Process:
+o For each letter in the plaintext:
+▪ If the letter is an uppercase letter:
+▪ Shift it by the key number of positions down the alphabet
+(mod 26).
+▪ Wrap around if it goes past "Z".
+▪ If the letter is a lowercase letter:
+▪ Shift it by the key number of positions down the alphabet
+(mod 26).
+▪ Wrap around if it goes past "z".
+▪ If it is not a letter (e.g., space, punctuation), leave it unchanged.
+3. Output:
+o The ciphertext (the encrypted message after applying the shifts).
+2) ROT13 (Rotate by 13 Places)
+ROT13 is a specific case of the additive Cipher, where the shift key is fixed at 13. This means each
+letter is shifted by exactly 13 positions in the alphabet, making it a simple but effective form of
+obfuscation.
+• How it works:
+o Each letter of the alphabet is replaced by the letter 13 positions after it.
+o Since the alphabet has 26 letters, applying ROT13 twice will return the
+original text. Thus, ROT13 is its own inverse, meaning encryption and
+decryption use the same algorithm.
+• Steps:
+o Take a letter from the plaintext.
+o If the letter is between A and M (or a and m for lowercase), shift it forward by
+13 positions.
+o If the letter is between N and Z (or n and z), wrap around and shift it
+backward to the beginning of the alphabet.
+o Non-alphabetic characters (such as numbers, punctuation, or spaces) remain
+unchanged.
+ROT13 algorithm steps:
+1. Input:
+o A string of plaintext (the message to encode).
+2. Process:
+o For each character in the input string:
+▪ If it's a letter (either uppercase or lowercase):
+▪ Shift it 13 places forward in the alphabet.
+▪ If this shift exceeds 'Z' for uppercase or 'z' for lowercase, wrap
+around to the beginning of the alphabet.
+▪ If it's not a letter (such as punctuation or numbers), leave it unchanged.
+3. Output:
+o The resulting ciphertext (the encoded message after applying ROT13).
+o
+3) Atbash cipher
+The Atbash cipher is a very simple substitution cipher where the alphabet is reversed. This means
+that each letter of the alphabet is mapped to its reverse counterpart. In other words, 'A' becomes
+'Z', 'B' becomes 'Y', 'C' becomes 'X', and so on.
+It is an ancient cipher, believed to have been used in Hebrew and other early languages.
+How it works:
+Plaintext Alphabet: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Cipher Alphabet: Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+In the Atbash cipher, each letter of the plaintext is substituted with the letter from the cipher
+alphabet that corresponds to its position when counting from the end of the alphabet.
+Atbash algorithm steps:
+1. Input:
+o A string of plaintext (message to be encoded or decoded).
+2. Process:
+o For each letter in the input string:
+▪ If the letter is an uppercase letter ('A' to 'Z'):
+▪ Replace it with the corresponding letter from the end of
+the alphabet.
+▪ For example, 'A' becomes 'Z', 'B' becomes 'Y', 'C'
+becomes 'X', and so on.
+▪ If the letter is a lowercase letter ('a' to 'z'):
+▪ Replace it with the corresponding letter from the end of
+the alphabet.
+▪ For example, 'a' becomes 'z', 'b' becomes 'y', 'c' becomes
+'x', and so on.
+▪ If the character is not a letter (like spaces or punctuation), leave
+it unchanged.
+3. Output:
+o The resulting ciphertext after the letter substitutions.
+4) Vigenère Cipher
+The Vigenère Cipher is a polyalphabetic substitution cipher, which means it uses multiple Caesar
+ciphers based on the letters of a key. Each letter in the plaintext is shifted by a number of positions
+that depends on the corresponding letter in the key. This cipher is more secure than simple
+substitution ciphers like the Caesar cipher, as it uses different shifts for different positions in the
+plaintext.
+How it works:
+The Vigenère cipher uses a key (a string of letters) to determine the shift for each letter in the
+plaintext. Each letter in the key corresponds to a number representing its position in the alphabet
+(e.g., 'A' = 0, 'B' = 1, ..., 'Z' = 25). The letters in the plaintext are shifted by the amount specified
+by the corresponding letter in the key, which repeats if necessary.
+Example:
+If the key is "LEMON" and the plaintext is "HELLO", the Vigenère cipher shifts each letter in
+the plaintext by the number of positions corresponding to the letters in the key:
+Plaintext: H E L L O
+Key: L E M O N
+Shift: 11 4 12 14 13 (corresponding to L, E, M, O, N)
+Ciphertext: S I X Z B
+Vigenère cipher algorithm
+1. Input:
+A plaintext message to be encrypted.
+A key (a word or phrase used for shifting the letters of the plaintext).
+2. Process:
+Prepare the Key:
+If the key is shorter than the plaintext, repeat the key until it matches the length of the
+plaintext.
+Example: If the key is "LEMON" and the plaintext is "HELLO", the key becomes "LEMON".
+Shift Each Letter:
+For each letter in the plaintext, convert it into a number (A = 0, B = 1, ..., Z = 25).
+Do the same for each letter in the key.
+Shift the plaintext letter by adding the corresponding key letter's value (mod 26, as there are 26
+letters in the alphabet).
+Construct the Ciphertext:
+Convert the shifted numbers back into letters.
+If the plaintext contains non-alphabetic characters (like spaces or punctuation), leave them
+unchanged.
+3. Output:
+The resulting ciphertext after applying the Vigenère cipher.
+5) Rail Fence Cipher
+The Rail Fence Cipher is a form of transposition cipher, where the letters of the plaintext are written
+in a zigzag pattern across multiple "rails" (rows). After writing out the message in this zigzag
+pattern, the cipher text is obtained by reading the letters row by row.
+How it works:
+In the Rail Fence Cipher, the plaintext is written in a diagonal pattern across multiple rows or
+"rails," and then read row by row to get the ciphertext.
+Example:
+Let's consider encrypting the message "HELLO WORLD" using a Rail Fence Cipher with 3
+rails.
+1. Write the message in a zigzag across the rails:
+2. Read the letters row by row:
+o First row: HOR
+o Second row: ELWLD
+o Third row: LO
+So, the ciphertext would be: HOR ELWLD LO
+Encryption Algorithm
+1. Input:
+• A plaintext message.
+• The number of rails.
+2. Process:
+1. Write the message in a zigzag pattern across the rails.
+2. Read the characters from each rail sequentially to form the ciphertext.
+3. Output:
+• The resulting ciphertext.
+Decryption Algorithm
+To decrypt a Rail Fence Cipher, the reverse process is used:
+1. Input:
+• The ciphertext.
+• The number of rails.
+2. Process:
+1. Determine the zigzag pattern and where each letter should be placed in the rails.
+2. Fill the rails row by row with the ciphertext.
+3. Read the message in the zigzag pattern to recover the original plaintext.
