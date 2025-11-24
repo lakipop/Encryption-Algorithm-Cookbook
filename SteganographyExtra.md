@@ -56,12 +56,4 @@ The approximate storage capacity of a file can be determined with the `-S` optio
 ```bash
 snow -S -l 72 infile
 ```
-
-## AUTHOR
-This application was written by Matthew Kwan, who can be reached at mkwan@darkside.com.au
-
-## SEE ALSO
-ice_key_create(3)
-
----
-Version 1.1, 28 Dec 1996
+This will report the number of bytes that can be concealed in `infile`, assuming a maximum line length of 72 characters.
