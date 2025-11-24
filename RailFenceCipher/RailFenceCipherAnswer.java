@@ -1,3 +1,5 @@
+package RailFenceCipher;
+
 public class RailFenceCipherAnswer {
     // Encrypt text using the Rail Fence Cipher
     public static String encrypt(String text, int key) {

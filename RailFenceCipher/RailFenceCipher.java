@@ -1,3 +1,5 @@
+package RailFenceCipher;
+
 import java.util.Scanner;
 
 public class RailFenceCipher {

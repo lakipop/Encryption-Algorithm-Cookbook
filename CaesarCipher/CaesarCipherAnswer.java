@@ -1,3 +1,5 @@
+package CaesarCipher;
+
 public class CaesarCipherAnswer {
     // Encrypts text using the specified shift (key)
     public static String encrypt(String text, int shift) {

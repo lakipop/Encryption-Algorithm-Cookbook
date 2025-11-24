@@ -1,3 +1,5 @@
+package VigenereCipher;
+
 public class VigenereCipherAnswer {
     // Encrypt the text using Vigenere cipher
     public static String encrypt(String text, String key) {

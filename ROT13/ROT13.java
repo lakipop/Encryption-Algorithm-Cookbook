@@ -1,3 +1,5 @@
+package ROT13;
+
 import java.util.Scanner;
 
 public class ROT13 {

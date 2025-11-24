@@ -1,3 +1,5 @@
+package AtbashCipher;
+
 import java.util.Scanner;
 
 public class AtbashCipher {
