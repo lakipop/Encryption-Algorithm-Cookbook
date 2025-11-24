@@ -15,15 +15,15 @@ Let's consider encrypting the message "HELLOWORLD" using a Rail Fence Cipher wit
 rails.
 
 1.  Write the message in a zigzag across the rails:
-H . . . O . . . L . . . D
-. E . L . W . R .
-. . L . . . O . .
+H . . . O . . .  . L . . . 
+. E . L . W . R . . .D
+. . L . . .. O . .
 2.  Read the letters row by row:
-    -   First row: HOLD
-    -   Second row: ELWR
+    -   First row: HOL
+    -   Second row: ELWRD
     -   Third row: LO
 
-So, the ciphertext would be: HOLDECWRLO
+So, the ciphertext would be: HOLELWRDLO
 
 ## Encryption Algorithm
 
