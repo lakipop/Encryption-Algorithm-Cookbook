@@ -28,10 +28,54 @@ public class RailFenceCipherAnswer {
         return result.toString();
     }
 
+    // Decrypt text using the Rail Fence Cipher
+    public static String decrypt(String cipher, int key) {
+        char[][] rail = new char[key][cipher.length()];
+        boolean down = false;
+        int row = 0, col = 0;
+
+        for (int i = 0; i < cipher.length(); i++) {
+            if (row == 0 || row == key - 1) {
+                down = !down;
+            }
+            rail[row][col++] = '*';
+            row += down ? 1 : -1;
+        }
+
+        int index = 0;
+        for (int i = 0; i < key; i++) {
+            for (int j = 0; j < cipher.length(); j++) {
+                if (rail[i][j] == '*' && index < cipher.length()) {
+                    rail[i][j] = cipher.charAt(index++);
+                }
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        row = 0;
+        col = 0;
+        down = false;
+
+        for (int i = 0; i < cipher.length(); i++) {
+            if (row == 0 || row == key - 1) {
+                down = !down;
+            }
+            if (rail[row][col] != '*') {
+                result.append(rail[row][col++]);
+            }
+            row += down ? 1 : -1;
+        }
+
+        return result.toString();
+    }
+
     public static void main(String[] args) {
         String text = "HelloWorld";
         int key = 3;
         String encryptedText = encrypt(text, key);
         System.out.println("Encrypted Text: " + encryptedText);
+
+        String decryptedText = decrypt(encryptedText, key);
+        System.out.println("Decrypted Text: " + decryptedText);
     }
 }
