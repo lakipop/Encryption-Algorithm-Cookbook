@@ -1,15 +1,9 @@
-package AtbashCipher;
-
-import java.util.Scanner;
-
-public class AtbashCipher {
+public class AtbashCipherAnswer {
     // Encrypt/Decrypt text using Atbash cipher
     public static String atbash(String text) {
         StringBuilder result = new StringBuilder();
-
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
-
             if (Character.isUpperCase(ch)) {
                 result.append((char) ('Z' - (ch - 'A')));
             } else if (Character.isLowerCase(ch)) {
@@ -22,14 +16,8 @@ public class AtbashCipher {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter the text to apply Atbash cipher on:");
-        String text = scanner.nextLine();
-
+        String text = "Hello World!";
         String encryptedText = atbash(text);
-        System.out.println("Encrypted/Decrypted Text: " + encryptedText);
-
-        scanner.close();
+        System.out.println("Encrypted Text: " + encryptedText);
     }
 }
